@@ -1,16 +1,27 @@
-import { Link } from 'expo-router';
-import { View, Text } from 'react-native';
+import { useMemo, useState } from 'react';
+import ExploreHeader from '../../components/ExploreHeader';
+import Listings from '../../components/Listing';
+import { Link, Stack } from 'expo-router';
+import { View, Text, SafeAreaView } from 'react-native';
+import listingsData from '../../assets/data/air-bnb-listings.json';
 
-const Index = () => {
+const Page = () => {
+  const [category, setCategory] = useState<string>('all');
+  const onDataChange = (category: string) => {
+    setCategory(category);
+  }
+
+  const listings = useMemo(() => listingsData as any, [])
   return (
-    <View>
-      <Link href={'/(modals)/login'}>
-        <Text>Login</Text>
-      </Link>
-      <Link href={'/(modals)/booking'}><Text>Booking</Text></Link>
-      <Link href={'/listing/123'}><Text>Listing detail</Text></Link>
-    </View>
+    <SafeAreaView style={{ flex: 1, marginTop: 190 }}>
+      <Stack.Screen
+        options={{
+          header: () => <ExploreHeader onCategoryChange={onDataChange} />,
+        }}
+      />
+      <Listings listings={listings} category={category} />
+    </SafeAreaView>
   );
 };
 
-export default Index;
+export default Page;
