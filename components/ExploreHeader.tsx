@@ -107,7 +107,7 @@ const ExploreHeader = ({ onCategoryChange }: Props) => {
           </TouchableOpacity>
         </View>
 
-        <ScrollView horizontal contentContainerStyle={{ alignItems: 'center', gap: 20, paddingHorizontal: 16, }} ref={scollRef}>
+        <ScrollView horizontal contentContainerStyle={{ alignItems: 'center', gap: 20, paddingHorizontal: 16, }} ref={scollRef} showsHorizontalScrollIndicator={false}>
           {
             categories.map((category, index) => (
               <TouchableOpacity onPress={() => handleSelect(index)} key={index} ref={((el) => itemsRef.current[index] = el)} style={activeIndex === index ? styles.categoryBtnActive : styles.categoryBtn}>

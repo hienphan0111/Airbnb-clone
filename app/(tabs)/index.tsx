@@ -3,7 +3,7 @@ import ExploreHeader from '../../components/ExploreHeader';
 import Listings from '../../components/Listing';
 import { Link, Stack } from 'expo-router';
 import { View, Text, SafeAreaView } from 'react-native';
-import listingsData from '../../assets/data/air-bnb-listings.json';
+import listingsData from '../../assets/data/airbnb-listings.json';
 
 const Page = () => {
   const [category, setCategory] = useState<string>('all');
